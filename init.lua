@@ -35,3 +35,14 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = '▸ ',
+  eol = '¬',
+  trail = '~',
+  extends = '>',
+  precedes = '<',
+  space = '␣',
+}
