@@ -36,7 +36,7 @@ vim.schedule(function()
   require "mappings"
 end)
 
-
+-- show whitespace
 vim.opt.list = true
 vim.opt.listchars = {
   tab = '▸ ',
@@ -46,3 +46,4 @@ vim.opt.listchars = {
   precedes = '<',
   space = '␣',
 }
+
