@@ -47,3 +47,38 @@ vim.opt.listchars = {
   space = '␣',
 }
 
+-- color theme
+vim.opt.termguicolors = true
+
+local function set_hl(name, fg, bg, style)
+    local opts = {
+        fg = fg,
+        bg = bg,
+        bold = style == 'bold' or nil,
+        italic = style == 'italic' or nil,
+        underline = style == 'underline' or nil,
+    }
+    vim.api.nvim_set_hl(0, name, opts)
+end
+
+set_hl("Normal",      "#CECEEE", "#000000", nil)
+set_hl("EndOfBuffer", "#000000", "#000000", nil)
+set_hl("NonText",     "#444444", "#000000", nil)
+set_hl("CursorLine",  nil,       "#1A1A1A", nil)
+set_hl("Visual",      nil,       "#404040", nil)
+set_hl("LineNr",      "#AAAAAA", "#000000", nil)
+set_hl("CursorLineNr","#FFFFFF", "#1A1A1A", "bold")
+set_hl("Comment",     "#6A6A6A", nil, "italic")
+set_hl("Constant",    "#FFCC00", nil, nil)
+set_hl("String",      "#FFCC00", nil, nil)
+set_hl("Number",      "#FF8000", nil, nil)
+set_hl("Keyword",     "#00FFFF", nil, nil)
+set_hl("Statement",   "#00FFFF", nil, "bold")
+set_hl("Type",        "#00FF80", nil, nil)
+set_hl("Identifier",  "#00FF80", nil, nil)
+set_hl("Function",    "#FFFF00", nil, nil)
+set_hl("StatusLine",  "#EEEEEE", "#404040", nil)
+set_hl("StatusLineNC","#AAAAAA", "#202020", nil)
+set_hl("Error",       "#FF0000", nil, "bold")
+set_hl("Warning",     "#FF8000", nil, "bold")
+set_hl("MatchParen",  "#FF00FF", nil, "bold")
