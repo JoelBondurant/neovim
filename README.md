@@ -1,8 +1,8 @@
 ## Neovim Configuration
 
-This repository contains configuration and customizations for **Neovim** based on **NvChad**, a highly modular and fast Neovim configuration framework.
+This repository contains configuration and customizations for **Neovim** based on **NvChad** / **LazyVim**.
 
-This setup is tailored to a Rust specific workflow..
+This setup is tailored to Rust.
 
 ---
 
@@ -10,32 +10,40 @@ This setup is tailored to a Rust specific workflow..
 
 This setup assumes you already have **Neovim (v0.9.0+)** and **Git** installed.
 
-1.  **Backup Existing Configuration (Optional but Recommended):**
-    If you have an existing Neovim configuration, back it up first.
+1.  **Install Prerequisites:**
+    Install Neovim, rust-analyzer:
     ```bash
-    mv ~/.config/nvim ~/.config/nvim.bak
+    sudo snap install neovim --classic
+    rustup component add rust-analyzer
     ```
 
-2.  **Clone the Repository:**
+3.  **Clone the Repository:**
     Clone this repository into your Neovim configuration directory:
     ```bash
     git clone https://github.com/JoelBondurant/neovim ~/.config/nvim
     ```
 
-3.  **Launch Neovim:**
+4.  **Launch Neovim:**
     Open Neovim. Lazy.nvim will automatically download all necessary plugins.
     ```bash
     nvim
     ```
 
-4.  **Setup Alternatives:**
+5.  **LazyVim Sync:**
+    In Neovim, force a full cleanup and update cycle of LazyVim.
+    ```bash
+    :Lazy sync
+    ```
+
+6.  **Setup Alternatives:**
     Point vim to Neovim (nvim).
     ```bash
     echo "alias gvim='vim.gtk3'" >> ~/.bash_aliases  
-    sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
-    sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
-    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 60
+    NEOVIM_PATH="/snap/nvim/current/usr/bin/nvim"
+    sudo update-alternatives --install /usr/bin/vim vim "$NEOVIM_PATH" 100
+    sudo update-alternatives --install /usr/bin/vi vi "$NEOVIM_PATH" 100
+    sudo update-alternatives --install /usr/bin/editor editor "$NEOVIM_PATH" 100
     sudo update-alternatives --config vim
     ```
----
 
+---
