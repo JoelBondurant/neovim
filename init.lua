@@ -82,3 +82,19 @@ set_hl("StatusLineNC","#AAAAAA", "#202020", nil)
 set_hl("Error",       "#FF0000", nil, "bold")
 set_hl("Warning",     "#FF8000", nil, "bold")
 set_hl("MatchParen",  "#FF00FF", nil, "bold")
+
+
+-- code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "Set LSP folding if client supports it",
+  callback = function(ctx)
+    local client = vim.lsp.get_client_by_id(ctx.data.client_id)
+    if client and client:supports_method("textDocument/foldingRange") then
+      vim.opt_local.foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+  end,
+})
