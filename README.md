@@ -8,12 +8,14 @@ This setup is tailored to Rust.
 
 ### Installation
 
-This setup assumes you already have **Neovim (v0.9.0+)** and **Git** installed.
+This setup assumes you already have **Git** installed.
 
 1.  **Install Prerequisites:**
-    Install Neovim, rust-analyzer:
+    Install Neovim from snap not apt, rust-analyzer:
     ```bash
-    sudo snap install neovim --classic
+    # sudo apt remove neovim
+    # sudo add-apt-repository --remove ppa:neovim-ppa/unstable
+    sudo snap install nvim --classic
     rustup component add rust-analyzer
     ```
 
