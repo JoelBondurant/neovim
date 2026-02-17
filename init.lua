@@ -36,6 +36,12 @@ vim.schedule(function()
   require "mappings"
 end)
 
+-- respect tabs
+vim.opt.expandtab = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 0
+
 -- show whitespace
 vim.opt.list = true
 vim.opt.listchars = {
